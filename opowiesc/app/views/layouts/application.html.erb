@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Opowiesc</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+</head>
+<body>
+    <ul class="nav pull-right">
+        <%= link_to "Tales","/tales" %>
+        |
+        <%= link_to "Galleries","/galleries" %>
+    </ul>
+    <a class="brand" href="/users/sign_up">Rejestracja</a>
+    <% unless user_signed_in? %>
+    <li>
+        <%= link_to "Sign in","/users/sign_in" %></li>
+    <% else %>
+    <li>
+        <%= current_user.email %></li>
+    <%= link_to 'Sign Out', "account/logout" %>
+    <% end %>
+    <%= yield %>
+    <ul id="navigation">
+        <li>
+            <%= link_to "Front page tales","/tales" %></li>
+        <li>
+            <%= link_to "Submit a new tale!","/tales/new" %></li>
+        <li>
+            <%= link_to "Front page galleries","/galleries" %></li>
+        <li>
+            <%= link_to "Submit a new photo!","/galleries/new" %></li>
+    </ul>
+</body>
+</html>
+

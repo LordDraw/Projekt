@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Opowiesc</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %> </head> <body> <div id="content"> <%= yield %>
+      <div id="login_logout"> </body> </html>
+        <% if @current_user %>
+          Logged in as:
+          <%= @current_user.login %>
+          <em><%= link_to "(Logout)", session_path, :method => :delete 
+%></em>
+        <% else %>
+          <em>Not logged in.</em>
+          <%= link_to 'Login', new_session_path %>
+        <% end %>
+      </div>
+      <h1>Shovell</h1>
+      <% unless flash[:notice].blank? %>
+    	<div id="notification"><%= flash[:notice] %></div>
+    	<% end %>
+      <%= yield %>
+    </div>

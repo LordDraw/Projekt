@@ -1,0 +1,44 @@
+<h1>Listing comments</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+    <th>Tale</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment.content %></td>
+    <td><%= comment.tale_id %></td>
+    <td><%= link_to 'Show', comment %></td>
+    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+    <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Comment', '/tales/comments/new' %>
+<%= link_to 'New Comment', new_comment_path %>
+
+
+
+<div id="comments">
+<% for comment in @comments %>
+  <div class="comment">
+    <%=simple_format comment.content %>
+  </div>
+<% end %>
+</div>
+
+
+<h2>New Comment</h2>
+
+
+
+ 
+  

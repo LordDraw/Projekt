@@ -1,0 +1,3 @@
+module TalesHelper
+   
+end

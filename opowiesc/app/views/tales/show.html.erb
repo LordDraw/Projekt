@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @tale.title %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%= @tale.link %>
+</p>
+ <b>Your rating:</b>
+  <%= @tale.rate %>
+</p>
+
+
+<p class="submitted_by">
+Submitted by:
+<%= @tale.user %>
+</p>
+
+<%= link_to 'Edit', edit_tale_path(@tale) %> |
+<%= link_to 'Back', tales_path %>

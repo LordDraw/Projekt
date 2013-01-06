@@ -1,0 +1,55 @@
+<%- model_class = Tale -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:link) %></th>
+      <th><%= model_class.human_attribute_name(:ratings) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tales.each do |tale| %>
+      <tr>
+        <td><%= link_to tale.id, tale_path(tale) %></td>
+        <td><%= tale.title %></td>
+        <td><%= link_to tale.link, tale.link %></td>
+        <td>
+         
+           <ul class="rating">
+            <% form_id = "tale_#{tale.id}_rating" %>
+
+
+           
+                    <% (1..5).each do |i| %>
+                              <%= i %>
+                 <% end %>
+       
+        </td>
+        <td><%=l tale.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_tale_path(tale), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      tale_path(tale),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_tale_path,
+            :class => 'btn btn-primary' %>
+<p>
+<%= Time.now %>
+</p>
